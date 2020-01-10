@@ -9,10 +9,10 @@ namespace League_of_Dinasaurs_vs_Robots
     class Robot
     {
         //member variables (has a)
-        string name;
-        int health;
-        int attackPower;
-        int powerLevel;
+        public string name;
+        public int health;
+        public int attackPower;
+        public int powerLevel;
 
 
 
@@ -24,8 +24,6 @@ namespace League_of_Dinasaurs_vs_Robots
             health = healthPass;
             attackPower = attackPowerPass;
             powerLevel = powerLevelPass;
-
-
 
         }
 

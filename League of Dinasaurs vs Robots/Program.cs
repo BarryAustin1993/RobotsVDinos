@@ -10,10 +10,9 @@ namespace League_of_Dinasaurs_vs_Robots
     {
         static void Main(string[] args)
         {
-            Simulation sim = new Simulation();
+            Battlefield sim = new Battlefield();
             sim.RunSim();
 
-            Console.ReadLine();
 
         }
     }

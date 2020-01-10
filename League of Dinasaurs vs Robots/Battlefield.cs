@@ -11,8 +11,7 @@ namespace League_of_Dinasaurs_vs_Robots
         //member variables (has a)
         Herd herd;
         Fleet fleet;
-
-
+        
         //constructor (spawner)
         public Battlefield()
         {
@@ -22,8 +21,43 @@ namespace League_of_Dinasaurs_vs_Robots
 
         }
 
-
         //member methods (can do)
+        public void Instructions()
+        {
+            Console.WriteLine("Welcome to League of Robots!");
+            Console.WriteLine("We are in a time far ahead of your own, and have called your concious forward through a dream continuium! ");
+            Console.WriteLine("You have been selected as having extrodinary capabilites that we need to utilize to ensure human exsistance!");
+            Console.WriteLine("You will be given three Robots to choose from. Should one fall you will be transfered to another!");
+            Console.WriteLine("Should all three fall, your concious will be transported back to 2020, and you will wake up from a bad dream!");
+            Console.WriteLine("However the Human race will have lost its last chance at survival, make sure you win!");
+            Console.WriteLine("  ");
+            Console.WriteLine("We have selected three of our best Robots for you!");
+            Console.WriteLine("Yasuo - Is a Fighter class, melee attacks with average attack and health!");
+            Console.WriteLine("Ashe - Is a Ranged class, ranged attacks with high attack and less health");
+            Console.WriteLine("Leona - Is a Tank class, melee attacks with low attack and high health");
+        }
 
+        public void RunSim()
+        {
+            Instructions();
+            fleet.ChooseRobot();
+            herd.ChooseDinosaur();
+            DisplayScreen();
+        }
+        public void DisplayScreen()
+        {
+            Console.WriteLine("Enemy: " + herd.CurrentDinosaur.type);
+            Console.WriteLine("Health: " + herd.CurrentDinosaur.health);
+            Console.WriteLine("Energy: " + herd.CurrentDinosaur.energy);
+            Console.WriteLine("");
+            Console.WriteLine("Robot: " + fleet.CurrentRobot.name);
+            Console.WriteLine("Health: " + fleet.CurrentRobot.health);
+            Console.WriteLine("Power Level: " + fleet.CurrentRobot.powerLevel);
+            Console.ReadLine();
+        }
+       
+       
+        
     }
+
 }

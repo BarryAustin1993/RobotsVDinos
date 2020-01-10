@@ -9,10 +9,10 @@ namespace League_of_Dinasaurs_vs_Robots
     class Dinosaur
     {
         //member variables (has a)
-        string type;
-        int health;
-        int energy;
-        int attackPower;
+        public string type;
+        public int health;
+        public int energy;
+        public int attackPower;
 
 
         //constructor (spawner)
