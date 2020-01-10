@@ -59,6 +59,7 @@ namespace League_of_Dinasaurs_vs_Robots
                         IdiotProof();
                         break;
                 }
+
             }
         }
     }

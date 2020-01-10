@@ -11,7 +11,7 @@ namespace League_of_Dinasaurs_vs_Robots
         //member variables (has a)
         Herd herd;
         Fleet fleet;
-        
+
         //constructor (spawner)
         public Battlefield()
         {
@@ -48,16 +48,67 @@ namespace League_of_Dinasaurs_vs_Robots
         {
             Console.WriteLine("Enemy: " + herd.CurrentDinosaur.type);
             Console.WriteLine("Health: " + herd.CurrentDinosaur.health);
-            Console.WriteLine("Energy: " + herd.CurrentDinosaur.energy);
+            Console.WriteLine("Attack: " + herd.CurrentDinosaur.attackPower);
             Console.WriteLine("");
             Console.WriteLine("Robot: " + fleet.CurrentRobot.name);
             Console.WriteLine("Health: " + fleet.CurrentRobot.health);
             Console.WriteLine("Power Level: " + fleet.CurrentRobot.powerLevel);
             Console.ReadLine();
+            PlayerChoice();
         }
-       
-       
-        
+        public void PlayerChoice()
+        {
+            Console.WriteLine("/n Please choose to: /n 1: Attack,/n2: Dodge,/n3: or Charge!");
+            string userdecision = Console.ReadLine();
+            switch (userdecision)
+            {
+                case "1":
+
+                    break;
+                case "2":
+
+                    break;
+                case "3":
+
+                    break;
+                default:
+                    Console.Clear();
+                    DisplayScreen();
+                    break;
+            }
+        }
+        public void ComputerChoice()
+        {
+            List<String> Options = new List<string>() { "1", "2", "3" };
+            Random random = new Random();
+            int index = random.Next(Options.Count);
+
+            string computerChoice = Options[index];
+
+            switch (computerChoice)
+            {
+                case "1":
+                    //AttackSequence();
+                    break;
+                case "2":
+                    //blocksequence();
+                    break;
+                case "3":
+                    //Chargesequence();
+                    break;
+                default:
+
+                    break;
+            }
+        }
+        public void DinoAttackSeq()
+        {
+            
+        }
+
+
+
+        }
+
     }
 
-}
