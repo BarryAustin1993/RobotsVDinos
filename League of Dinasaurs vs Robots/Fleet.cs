@@ -39,28 +39,42 @@ namespace League_of_Dinasaurs_vs_Robots
                 // add in final game code later
             }
         }
-            public void ChooseRobot()
+        public void ChooseRobot()
+        {
+            List<string> RobotNames = new List<string>();
+            for (int i = 0; i < robots.Count; i++)
             {
-                Console.WriteLine("Choose your robot: Yasuo, Ashe, or Leona!");
-                string userInput = Console.ReadLine().ToLower();
-                Console.Clear();
-                switch (userInput)
+                if (robots[i].health <= 0)
                 {
-                    case "yasuo":
-                        CurrentRobot = robots[0];
-                        break;
-                    case "ashe":
-                        CurrentRobot = robots[1];
-                        break;
-                    case "leona":
-                        CurrentRobot = robots[2];
-                        break;
-                    default:
-                        IdiotProof();
-                        break;
+                    robots.RemoveAt(i);
                 }
-
+            }
+            for (int j = 0; j < robots.Count; j++)
+            {
+                RobotNames.Add(robots[j].name);
+            }
+            Console.WriteLine("Choose your robot: ");
+            for (int k = 0; k < RobotNames.Count; k++)
+            {
+                Console.Write(RobotNames[k] + " \n");
+            }
+            string userInput = Console.ReadLine().ToLower();
+            Console.Clear();
+            foreach (var RobotChoice in robots)
+            {
+                if (userInput == RobotChoice.name.ToLower())
+                {
+                    CurrentRobot = RobotChoice;
+                }
+                else
+                {
+                    Console.Clear();
+                    IdiotProof();
+                }
+                
             }
         }
+
     }
+}
 

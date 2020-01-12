@@ -11,32 +11,29 @@ namespace League_of_Dinasaurs_vs_Robots
         //member variables (has a)
         Herd herd;
         Fleet fleet;
-
         //constructor (spawner)
         public Battlefield()
         {
             herd = new Herd();
             fleet = new Fleet();
-
-
         }
 
         //member methods (can do)
         public void Instructions()
         {
-            Console.WriteLine("Welcome to League of Robots!");
-            Console.WriteLine("We are in a time far ahead of your own, and have called your concious forward through a dream continuium! ");
-            Console.WriteLine("You have been selected as having extrodinary capabilites that we need to utilize to ensure human exsistance!");
-            Console.WriteLine("You will be given three Robots to choose from. Should one fall you will be transfered to another!");
-            Console.WriteLine("Should all three fall, your concious will be transported back to 2020, and you will wake up from a bad dream!");
-            Console.WriteLine("However the Human race will have lost its last chance at survival, make sure you win!");
-            Console.WriteLine("  ");
-            Console.WriteLine("We have selected three of our best Robots for you!");
-            Console.WriteLine("Yasuo - Is a Fighter class, melee attacks with average attack and health!");
-            Console.WriteLine("Ashe - Is a Ranged class, ranged attacks with high attack and less health");
-            Console.WriteLine("Leona - Is a Tank class, melee attacks with low attack and high health");
-        }
+            Console.WriteLine("Welcome to League of Robots! \n" +
+                "We are in a time far ahead of your own, and have called your concious forward through a dream continuium! \n " +
+                "You have been selected as having extrodinary capabilites that we need to utilize to ensure human exsistance! \n" +
+                "You will be given three Robots to choose from. Should one fall you will be transfered to another! \n" +
+                "Should all three fall, your concious will be transported back to 2020, and you will wake up from a bad dream! \n" +
+                "However the Human race will have lost its last chance at survival, make sure you win! \n" +
+                "\n" +
+                "We have selected three of our best Robots for you! \n" +
+                "Yasuo - Is a Fighter class, melee attacks with average attack and health! \n" +
+                "Ashe - Is a Ranged class, ranged attacks with high attack and less health \n" +
+                "Leona - Is a Tank class, melee attacks with low attack and high health");
 
+        }
         public void RunSim()
         {
             Instructions();
@@ -53,17 +50,17 @@ namespace League_of_Dinasaurs_vs_Robots
             Console.WriteLine("Robot: " + fleet.CurrentRobot.name);
             Console.WriteLine("Health: " + fleet.CurrentRobot.health);
             Console.WriteLine("Power Level: " + fleet.CurrentRobot.powerLevel);
-            Console.ReadLine();
-            PlayerChoice();
+            Console.WriteLine("");
+            TurnSequence();
         }
         public void PlayerChoice()
         {
-            Console.WriteLine("/n Please choose to: /n 1: Attack,/n2: Dodge,/n3: or Charge!");
+            Console.WriteLine("\nPlease choose to:\n1: Attack\n2: Dodge\n3: Charge!");
             string userdecision = Console.ReadLine();
             switch (userdecision)
             {
                 case "1":
-
+                    RoboAttackSeq();
                     break;
                 case "2":
 
@@ -76,8 +73,9 @@ namespace League_of_Dinasaurs_vs_Robots
                     DisplayScreen();
                     break;
             }
+            Console.ReadLine();
         }
-        public void ComputerChoice()
+        public string ComputerChoice()
         {
             List<String> Options = new List<string>() { "1", "2", "3" };
             Random random = new Random();
@@ -88,7 +86,7 @@ namespace League_of_Dinasaurs_vs_Robots
             switch (computerChoice)
             {
                 case "1":
-                    //AttackSequence();
+                    DinoAttackSeq();
                     break;
                 case "2":
                     //blocksequence();
@@ -100,13 +98,42 @@ namespace League_of_Dinasaurs_vs_Robots
 
                     break;
             }
+            return computerChoice;
         }
         public void DinoAttackSeq()
         {
+            fleet.CurrentRobot.health -= herd.CurrentDinosaur.attackPower;   
+        }
+        public void RoboAttackSeq()
+        {
+            herd.CurrentDinosaur.health -= fleet.CurrentRobot.attackPower;
+        }
+        public void TurnSequence()
+        {
+            if (fleet.CurrentRobot.health > 0 && herd.CurrentDinosaur.health > 0)
+            {
+                PlayerChoice();
+                string choice = ComputerChoice();
+                if (choice != "3" && playerChoice != "3")
+                {
+
+                }
+                Console.Clear();
+                DisplayScreen();
+            }
+            else if (fleet.CurrentRobot.health <= 0)
+            {
+                Console.WriteLine(fleet.CurrentRobot.name + "has taken too much damage and is non-functional, please one of the remaining robots!");
+
+                fleet.ChooseRobot();
+                DisplayScreen();
+            }
+            else if (herd.CurrentDinosaur.health <= 0)
+            {
+                //replace fighter
+            }
             
         }
-
-
 
         }
 
